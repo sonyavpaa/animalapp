@@ -26,5 +26,3 @@ const Cards = (props) => {
 };
 
 export default Cards;
-
-// src = https://source.unsplash.com/1600x900/?${props.title}"";
