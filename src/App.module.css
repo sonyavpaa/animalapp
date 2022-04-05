@@ -21,6 +21,21 @@ h1 {
   font-size: 4em;
 }
 
+.animalsTotal {
+  margin: 0 0 0.5em 1.5em;
+
+  position: relative;
+  font-size: 0.8em;
+  color: rgb(80, 78, 78);
+}
+
+.animalsTotal span {
+  color: rgb(224, 119, 34);
+}
+
+.inputContainer {
+}
+
 .cardsContainer {
   align-self: center;
   display: flex;

@@ -6,15 +6,7 @@ import classes from "./App.module.css";
 class App extends Component {
   state = {
     animals: animals,
-  };
-
-  removeHandler = (name) => {
-    const updatedArr = this.state.animals.filter(
-      (animal) => animal.name !== name
-    );
-    this.setState({
-      animals: updatedArr,
-    });
+    search: "",
   };
 
   addLikeHandler = (name) => {
@@ -35,12 +27,41 @@ class App extends Component {
     });
   };
 
+  searchHandler = (e) => {
+    this.setState({
+      search: e.target.value,
+    });
+  };
+
+  removeHandler = (name) => {
+    const updatedArr = this.state.animals.filter(
+      (animal) => animal.name !== name
+    );
+    this.setState({
+      animals: updatedArr,
+    });
+  };
+
   render() {
+    const animalFilter = this.state.animals.filter((animal) => {
+      return animal.name
+        .toLowerCase()
+        .includes(this.state.search.toLowerCase());
+    });
+
     return (
       <div className={classes.App}>
         <h1 className={classes.h1}>Animals app</h1>
+
+        <div className={classes.inputContainer}>
+          <h2 className={classes.animalsTotal}>
+            {" "}
+            animals total:<span>{this.state.animals.length}</span>
+          </h2>
+          <input type="text" onChange={this.searchHandler}></input>
+        </div>
         <div className={classes.cardsContainer}>
-          {this.state.animals.map((animal) => {
+          {animalFilter.map((animal) => {
             return (
               <Cards
                 key={animal.name}
